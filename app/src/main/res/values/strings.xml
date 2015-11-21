@@ -3,7 +3,6 @@
 
     <string name="navigation_jogar_dado">Jogar Dado</string>
     <string name="navigation_jogar_xadrez">Jogar Xadrez</string>
-    <string name="navigation_jogar_xadrez2">Jogar Xadrez 2</string>
     <string name="navigation_jogar_quiz">Jogar Quiz</string>
     <string name="title_activity_parametros_xadrez">Parâmetros Xadrez</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>

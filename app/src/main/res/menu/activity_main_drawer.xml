@@ -3,9 +3,7 @@
 
     <group android:checkableBehavior="single">
         <item android:id="@+id/nav_dado" android:title="@string/navigation_jogar_dado" />
-        <item android:id="@+id/nav_xadrez" android:title="@string/navigation_jogar_xadrez" />
-
-        <item android:id="@+id/nav_xadrez2" android:title="@string/navigation_jogar_xadrez2"/>
+        <item android:id="@+id/nav_xadrez" android:title="@string/navigation_jogar_xadrez"/>
         <item android:id="@+id/nav_quiz" android:title="@string/navigation_jogar_quiz"/>
     </group>
 

@@ -7,7 +7,9 @@
     android:paddingBottom="@dimen/activity_vertical_margin"
     tools:context="br.edu.ifspsaocarlos.sdm.trabalhofinal.Xadrez"
     android:weightSum="10"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:contextClickable="true"
+    android:background="#303030">
 
     <TextView
         android:id="@+id/txtNomeJogador1"
@@ -19,7 +21,8 @@
         android:singleLine="true"
         android:layout_weight="0.5"
         android:layout_gravity="center_horizontal"
-        android:text="Jogador 1" />
+        android:text="Jogador 1"
+        android:textColor="#FAFAFA" />
 
     <TextView
         android:id="@+id/txtTempoJogador1"
@@ -27,10 +30,16 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
+        android:text="00"
+        android:singleLine="false"
+        android:autoText="false"
+        android:textAlignment="center"
+        android:textStyle="normal|bold"
+        android:elegantTextHeight="true"
+        android:textIsSelectable="false"
         android:textSize="50dp"
-        android:text=""
-        android:singleLine="true"
-        android:layout_weight="2" />
+        android:layout_weight="2"
+        android:textColor="#E91E63" />
 
     <TextView
         android:id="@+id/txtNomeJogador2"
@@ -43,7 +52,8 @@
         android:layout_weight="0.5"
         android:layout_gravity="center_horizontal"
         android:autoText="false"
-        android:text="Jogador 2" />
+        android:text="Jogador 2"
+        android:textColor="#FAFAFA" />
 
     <TextView
         android:id="@+id/txtTempoJogador2"
@@ -52,11 +62,13 @@
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         android:textSize="50dp"
+        android:text="00"
         android:singleLine="true"
-        android:text=""
-        android:layout_weight="2" />
-
-
+        android:autoText="false"
+        android:textAlignment="center"
+        android:layout_weight="2"
+        android:textStyle="normal|bold"
+        android:textColor="#F57F17" />
     <Button
         android:id="@+id/btnIniciarXadrez"
         android:layout_width="match_parent"
@@ -68,6 +80,7 @@
         android:textStyle="bold"
         android:singleLine="true"
         android:textAlignment="center"
-        android:textSize="30dp" />
+        android:textSize="30dp"
+        android:background="#82B1FF" />
 
 </LinearLayout>

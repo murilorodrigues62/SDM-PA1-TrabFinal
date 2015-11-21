@@ -8,6 +8,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import java.util.concurrent.TimeUnit;
+
 import br.edu.ifspsaocarlos.sdm.trabalhofinal.R;
 
 
@@ -15,7 +17,7 @@ public class JogoXadrezActivity2 extends Activity implements View.OnClickListene
 
     private boolean tempoIniciado = false;
     private boolean jogador1Ativo = true;
-    private Button btnTrocar; //// TODO: 18/11/15 Incliur botão para parar 
+    private Button btnTrocar;
     public TextView txtTempoJogador1, txtTempoJogador2, txtNomeJogador1, txtNomeJogador2;
     private long tempoJogador1;
     private long tempoJogador2;
@@ -55,8 +57,8 @@ public class JogoXadrezActivity2 extends Activity implements View.OnClickListene
         tempoJogador2 = intent.getLongExtra("EXTRA_TEMPO", 1) *60 *1000;
 
         // Apresenta na tela os tempos
-        txtTempoJogador1.setText(txtTempoJogador1.getText() + String.valueOf(tempoJogador1 / 1000));
-        txtTempoJogador2.setText(txtTempoJogador2.getText() + String.valueOf(tempoJogador2 / 1000));
+        txtTempoJogador1.setText(formatTime(tempoJogador1));
+        txtTempoJogador2.setText(formatTime(tempoJogador2));
 
         // Cria temporizador para os jogadores
         countDownTimer1 = new MyCountDownTimer(tempoJogador1, intervalo);
@@ -140,16 +142,26 @@ public class JogoXadrezActivity2 extends Activity implements View.OnClickListene
             // Atualiza na tela o tempo e guarda o tempo atual para ser utilizado na troca de jogadores
             if (jogador1Ativo) {
 
-                txtTempoJogador1.setText("" + millisUntilFinished / 1000);
+                txtTempoJogador1.setText(formatTime(millisUntilFinished));
                 tempoJogador1 = millisUntilFinished;
 
             } else {
 
-                txtTempoJogador2.setText("" + millisUntilFinished / 1000);
+                txtTempoJogador2.setText(formatTime(millisUntilFinished));
                 tempoJogador2 = millisUntilFinished;
 
             }
         }
+    }
+    public String formatTime(long tempo){
+
+        // Função para formatar o tempo em HH:MM:SS
+        String formato = String.format("%02d:%02d:%02d", TimeUnit.MILLISECONDS.toHours(tempo),
+                TimeUnit.MILLISECONDS.toMinutes(tempo) - TimeUnit.HOURS.toMinutes(TimeUnit.MILLISECONDS.toHours(tempo)),
+                TimeUnit.MILLISECONDS.toSeconds(tempo) - TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(tempo)));
+
+        return formato;
+
     }
 
 }

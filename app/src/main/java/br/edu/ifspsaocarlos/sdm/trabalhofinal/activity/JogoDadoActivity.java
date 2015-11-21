@@ -18,6 +18,9 @@ public class JogoDadoActivity extends Activity {
 
         imgDado = (ImageView) findViewById(R.id.imgDado);
 
+        if (savedInstanceState != null){
+            //imgDado = (ImageView) savedInstanceState.getSerializable("FACE");
+        }
     }
 
     public void OnClickJogarDado(View v) {
@@ -29,6 +32,9 @@ public class JogoDadoActivity extends Activity {
 
     }
 
-
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        //outState.putSerializable("FACE", imgDado.getImageAlpha());
+    }
 }
-

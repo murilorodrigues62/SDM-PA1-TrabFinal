@@ -58,14 +58,8 @@ public class MainActivity extends AppCompatActivity
 
         }
         else if (id == R.id.nav_xadrez) {
-            Intent intentJogarXadrez = new Intent(this, JogoXadrezActivity.class);
-            startActivity(intentJogarXadrez);
-            return true;
-        }
-
-        else if (id == R.id.nav_xadrez2) {
-            Intent intentConfigXadrez = new Intent(this, ConfigXadrezActivity.class);
-            startActivity(intentConfigXadrez);
+            Intent intent = new Intent(this, ConfigXadrezActivity.class);
+            startActivity(intent);
             return true;
         }
         else if (id == R.id.nav_quiz) {
