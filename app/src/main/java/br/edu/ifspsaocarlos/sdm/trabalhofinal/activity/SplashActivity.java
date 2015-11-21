@@ -57,9 +57,9 @@ public class SplashActivity extends Activity implements Runnable{
     public void run() {
         try {
             synchronized(this){
-                //Espera por 5 segundos or sai quando
+                //Espera por 2 segundos or sai quando
                 //o usuário tocar na tela
-                wait(5000);
+                wait(2000);
                 mblnClicou = true;
             }
         }

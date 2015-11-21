@@ -3,10 +3,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/newGame"
+        android:id="@+id/salvar"
         app:showAsAction="always"
         android:icon="@drawable/ic_action_accept"
         android:title="Salvar"
+        android:onClick="onClickSalvar"
         />
 
 </menu>

@@ -46,4 +46,8 @@
     <string name="KEY_DICA2">dica2</string>
     <string name="KEY_DICA3">dica3</string>
 
+    <string name="valida_tempo">Informe um tempo maior que zero!</string>
+    <string name="jogador1">Jogador 1</string>
+    <string name="jogador2">Jogador 2</string>
+
 </resources>

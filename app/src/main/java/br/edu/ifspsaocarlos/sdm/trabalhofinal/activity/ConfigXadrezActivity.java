@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import br.edu.ifspsaocarlos.sdm.trabalhofinal.R;
 import br.edu.ifspsaocarlos.sdm.trabalhofinal.model.GameInfo;
@@ -13,7 +14,6 @@ import br.edu.ifspsaocarlos.sdm.trabalhofinal.model.GameInfo;
 public class ConfigXadrezActivity extends AppCompatActivity {
 
     //private static final int INTENT_CRONO_XADREZ = 2;
-    private GameInfo gameInfo;
     private TextView txtNomeJogador1, txtNomeJogador2, txtTempo;
 
     @Override
@@ -29,18 +29,34 @@ public class ConfigXadrezActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_configuracao_xadrez, menu);
+        getMenuInflater().inflate(R.menu.menu_config_xadrez, menu);
         return true;
     }
 
-    public void newGame(MenuItem menuItem) {
+    public void onClickSalvar(MenuItem menuItem) {
 
-        // Cria nova activity e passa os parâmetros para ela
-        Intent intent = new Intent(this, JogoXadrezActivity2.class);
-        intent.putExtra("EXTRA_JOGADOR1", txtNomeJogador1.getEditableText().toString());
-        intent.putExtra("EXTRA_JOGADOR2", txtNomeJogador2.getEditableText().toString());
-        intent.putExtra("EXTRA_TEMPO", Long.valueOf(txtTempo.getEditableText().toString()));
-        startActivity(intent);
+        // Validações
+        if (txtTempo.getEditableText().toString().isEmpty() ||
+           Long.valueOf(txtTempo.getEditableText().toString()) <= 0) {
+
+            CharSequence msg = getText(R.string.valida_tempo);
+            int duracao = Toast.LENGTH_LONG;
+
+            Toast toast = Toast.makeText(this, msg, duracao);
+            toast.show();
+            txtTempo.requestFocus();
+
+        }
+        else {
+
+            // Cria nova activity e passa os parâmetros para ela
+            Intent intent = new Intent(this, JogoXadrezActivity2.class);
+            intent.putExtra("EXTRA_JOGADOR1", txtNomeJogador1.getEditableText().toString());
+            intent.putExtra("EXTRA_JOGADOR2", txtNomeJogador2.getEditableText().toString());
+            intent.putExtra("EXTRA_TEMPO", Long.valueOf(txtTempo.getEditableText().toString()));
+            startActivity(intent);
+
+        }
 
     }
 }

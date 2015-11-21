@@ -42,6 +42,14 @@ public class JogoXadrezActivity2 extends Activity implements View.OnClickListene
         txtNomeJogador1.setText(intent.getStringExtra("EXTRA_JOGADOR1"));
         txtNomeJogador2.setText(intent.getStringExtra("EXTRA_JOGADOR2"));
 
+        if (txtNomeJogador1.getText().toString().isEmpty()){
+            txtNomeJogador1.setText(getText(R.string.jogador1));
+        }
+
+        if (txtNomeJogador2.getText().toString().isEmpty()){
+            txtNomeJogador2.setText(getText(R.string.jogador2));
+        }
+
         // Pega o tempo parametrizado e converte os minutos em milisegundos
         tempoJogador1 = intent.getLongExtra("EXTRA_TEMPO", 0) *60 *1000;
         tempoJogador2 = intent.getLongExtra("EXTRA_TEMPO", 1) *60 *1000;
