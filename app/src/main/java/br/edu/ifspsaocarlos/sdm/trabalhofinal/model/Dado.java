@@ -22,6 +22,7 @@ public class Dado implements Serializable {
 
     public Dado(){
 
+        // relaciona as faces do dado com a respectiva imagem
         faces.put(1,R.drawable.dado1);
         faces.put(2,R.drawable.dado2);
         faces.put(3,R.drawable.dado3);
@@ -32,14 +33,15 @@ public class Dado implements Serializable {
 
     public int jogarDado(Activity view) {
 
+        // Dispara som
         Audio.play(view, arquivoAudio);
 
+        // Sorteia número entre as possíveis faces do dado
         Random random = new Random();
-
         int numero = random.nextInt((faceMaior - faceMenor) + 1) + faceMenor;
 
+        // retorna a imagem da face sorteada
         return faces.get(numero);
-
 
     }
 }
