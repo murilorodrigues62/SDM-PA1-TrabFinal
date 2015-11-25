@@ -9,7 +9,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import br.edu.ifspsaocarlos.sdm.trabalhofinal.R;
-import br.edu.ifspsaocarlos.sdm.trabalhofinal.model.GameInfo;
 
 public class ConfigXadrezActivity extends AppCompatActivity {
 
@@ -50,7 +49,7 @@ public class ConfigXadrezActivity extends AppCompatActivity {
         else {
 
             // Cria nova activity e passa os parâmetros para ela
-            Intent intent = new Intent(this, JogoXadrezActivity2.class);
+            Intent intent = new Intent(this, JogoXadrezActivity.class);
             intent.putExtra("EXTRA_JOGADOR1", txtNomeJogador1.getEditableText().toString());
             intent.putExtra("EXTRA_JOGADOR2", txtNomeJogador2.getEditableText().toString());
             intent.putExtra("EXTRA_TEMPO", Long.valueOf(txtTempo.getEditableText().toString()));

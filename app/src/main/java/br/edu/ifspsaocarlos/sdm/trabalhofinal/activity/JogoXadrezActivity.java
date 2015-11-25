@@ -2,8 +2,10 @@ package br.edu.ifspsaocarlos.sdm.trabalhofinal.activity;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.support.annotation.ColorInt;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -11,11 +13,14 @@ import android.widget.TextView;
 import java.util.concurrent.TimeUnit;
 
 import br.edu.ifspsaocarlos.sdm.trabalhofinal.R;
+import br.edu.ifspsaocarlos.sdm.trabalhofinal.model.Audio;
 
 
-public class JogoXadrezActivity2 extends Activity implements View.OnClickListener {
 
-    private boolean tempoIniciado = false;
+
+public class JogoXadrezActivity extends Activity implements View.OnClickListener {
+
+    private boolean tempoIniciado, tempoEncerrado = false;
     private boolean jogador1Ativo = true;
     private Button btnTrocar;
     public TextView txtTempoJogador1, txtTempoJogador2, txtNomeJogador1, txtNomeJogador2;
@@ -68,51 +73,71 @@ public class JogoXadrezActivity2 extends Activity implements View.OnClickListene
     @Override
     public void onClick(View v) {
 
-        // Se o jogo ainda não foi iniciado
-        if (!tempoIniciado) {
+        // Se o tempo está encerrado fechamos a activity
+        if (tempoEncerrado){
 
-            // marca jogo como iniciado
-            tempoIniciado = true;
-            // marca jogador 1 como ativo
-            jogador1Ativo = true;
-
-            // inicia contagem regressiva do jogador 1
-            countDownTimer1.start();
-
-
+            finish();
         }
-        // Se o jogo já foi iniciado
         else {
 
-            // Se o Jogador 1 é quem estava ativo
-            if(jogador1Ativo){
+            // Se o jogo ainda não foi iniciado
+            if (!tempoIniciado) {
 
-                // Jogador 2 é quem vai jogar
-                jogador1Ativo = false;
-                // Cancela contador do Jogador 1
-                countDownTimer1.cancel();
-
-                // Reinicia temporizador do Jogador 2
-                countDownTimer2 = new MyCountDownTimer(tempoJogador2, intervalo);
-                countDownTimer2.start();
-
-            }
-            // Se o Jogador 2 é quem estava jogando
-            else {
-
-                // Jogador 1 é quem vai jogar
+                // marca jogo como iniciado
+                tempoIniciado = true;
+                // marca jogador 1 como ativo
                 jogador1Ativo = true;
-                // Cancela contador do Jogador 2
-                countDownTimer2.cancel();
 
-                // Reinicia temporizador do Jogador 1
-                countDownTimer1 = new MyCountDownTimer(tempoJogador1, intervalo);
+                // inicia contagem regressiva do jogador 1
                 countDownTimer1.start();
 
             }
+            // Se o jogo já foi iniciado
+            else {
 
+                // Se o Jogador 1 é quem estava ativo
+                if (jogador1Ativo) {
+
+                    // Jogador 2 é quem vai jogar
+                    jogador1Ativo = false;
+                    // Cancela contador do Jogador 1
+                    countDownTimer1.cancel();
+
+                    // Reinicia temporizador do Jogador 2
+                    countDownTimer2 = new MyCountDownTimer(tempoJogador2, intervalo);
+                    countDownTimer2.start();
+
+                }
+                // Se o Jogador 2 é quem estava jogando
+                else {
+
+                    // Jogador 1 é quem vai jogar
+                    jogador1Ativo = true;
+                    // Cancela contador do Jogador 2
+                    countDownTimer2.cancel();
+
+                    // Reinicia temporizador do Jogador 1
+                    countDownTimer1 = new MyCountDownTimer(tempoJogador1, intervalo);
+                    countDownTimer1.start();
+
+                }
+
+            }
+
+            /* Dispara som */
+            Audio.play(this, R.raw.button);
+
+            // Ajusta o texto do botão e a cor do relógio
+            btnTrocar.setText(R.string.trocar);
+
+            if (jogador1Ativo) {
+                txtTempoJogador1.setTextColor(Color.rgb(233, 30, 99));
+                txtTempoJogador2.setTextColor(Color.rgb(245, 127, 23));
+            } else {
+                txtTempoJogador2.setTextColor(Color.rgb(233, 30, 99));
+                txtTempoJogador1.setTextColor(Color.rgb(245, 127, 23));
+            }
         }
-        btnTrocar.setText(R.string.trocar);
     }
 
     public class MyCountDownTimer extends CountDownTimer {
@@ -133,6 +158,9 @@ public class JogoXadrezActivity2 extends Activity implements View.OnClickListene
                 txtTempoJogador2.setText(R.string.perdeu);
                 txtTempoJogador1.setText(R.string.ganhou);
             }
+
+            tempoEncerrado = true;
+            btnTrocar.setText(R.string.voltar);
 
         }
 

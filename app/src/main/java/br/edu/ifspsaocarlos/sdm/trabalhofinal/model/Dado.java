@@ -17,6 +17,7 @@ import br.edu.ifspsaocarlos.sdm.trabalhofinal.R;
 public class Dado implements Serializable {
     private final int faceMenor = 1;
     private final int faceMaior = 6;
+    private int faceSorteada;
     private final int arquivoAudio = R.raw.dado;
     private Map<Integer, Integer> faces = new HashMap<Integer, Integer>();
 
@@ -29,9 +30,12 @@ public class Dado implements Serializable {
         faces.put(4,R.drawable.dado4);
         faces.put(5,R.drawable.dado5);
         faces.put(6,R.drawable.dado6);
+
+        faceSorteada = faceMenor;
     }
 
-    public int jogarDado(Activity view) {
+    // metodo faz a jogada do dado
+    public void jogarDado(Activity view) {
 
         // Dispara som
         Audio.play(view, arquivoAudio);
@@ -40,8 +44,34 @@ public class Dado implements Serializable {
         Random random = new Random();
         int numero = random.nextInt((faceMaior - faceMenor) + 1) + faceMenor;
 
-        // retorna a imagem da face sorteada
-        return faces.get(numero);
+        // atribuimos o valor da face que foi sorteada
+        faceSorteada = numero;
 
+    }
+
+    // metodo retorna a imagem da face sorteada
+    public int getImagemFaceSorteada(){
+        return faces.get(faceSorteada);
+    }
+
+    // metodo retorna a imagem de alguma face
+    public int getImagemFace(int face){
+        return faces.get(face);
+    }
+
+    public int getFaceMenor() {
+        return faceMenor;
+    }
+
+    public int getFaceMaior() {
+        return faceMaior;
+    }
+
+    public int getFaceSorteada() {
+        return faceSorteada;
+    }
+
+    public int getArquivoAudio() {
+        return arquivoAudio;
     }
 }

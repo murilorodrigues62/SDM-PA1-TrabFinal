@@ -8,9 +8,9 @@
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="title_activity_crono_xadrez">CronoXadrezActivity</string>
-    <string name="start_button">Start</string>
-    <string name="pause_button">Pause</string>
-    <string name="stop_button">Stop</string>
+    <string name="start_button">Inicar</string>
+    <string name="pause_button">Pausar</string>
+    <string name="stop_button">Parar</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
     <string name="player2">Jogador 2</string>
     <string name="player1">Jogador 1</string>
@@ -19,6 +19,7 @@
 
     <string name="iniciar">INICIAR</string>
     <string name="parar">PARAR</string>
+    <string name="voltar">VOLTAR</string>
     <string name="reiniciar">REINICIAR</string>
     <string name="perdeu">Perdeu</string>
     <string name="ganhou">Ganhou</string>
